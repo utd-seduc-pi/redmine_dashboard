@@ -47,8 +47,6 @@
   - render_rdb_menu :options, t(:rdb_options), right: true, icons: true do
     - render_rdb_menu_list do
       - render_rdb_menu_list_item do
-        = rdb_checkbox_link_to t(:rdb_options_change_assignee), rdb_board_path(change_assignee: !@board.options[:change_assignee]),
-            enabled: @board.options[:change_assignee], title: t(:rdb_options_change_assignee_info)
         = rdb_checkbox_link_to t(:rdb_options_hide_done), rdb_board_path(hide_done: !@board.options[:hide_done]),
             enabled: @board.options[:hide_done], title: t(:rdb_options_hide_done_info)
         = rdb_checkbox_link_to t(:rdb_options_include_subprojects), rdb_board_path(include_subprojects: (@board.project_ids.size > 1) ? 'false' : 'true'),
