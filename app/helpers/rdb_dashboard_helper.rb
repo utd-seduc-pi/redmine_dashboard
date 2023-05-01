@@ -10,7 +10,7 @@ module RdbDashboardHelper
       if options[:anchor]
         link = options[:anchor].call.to_s.html_safe
       else
-        link = link_to_context_menu # link_to(title, '#', class: 'rdb-menu-link')
+        link = link_to(title, '#', class: 'rdb-menu-link')
       end
 
       if options[:header] && %i[h1 h2 h3 h4 h5].include?(options[:header].to_sym)
