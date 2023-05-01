@@ -75,11 +75,11 @@ class RdbDashboard
   end
 
   def issue_categories
-    @issue_categories ||= IssueCategory.visible.where(project_id: project_ids).distinct
+    @issue_categories ||= IssueCategory.where(project_id: project_ids).distinct
   end
 
   def trackers
-    @trackers ||= Tracker.visible.where(
+    @trackers ||= Tracker.where(
       id: Tracker.joins(:projects).where(projects: {id: project_ids}).distinct,
     ).sorted
   end
