@@ -11,7 +11,7 @@
       - render_rdb_menu_list [:all, :unassigned] do |val|
         = link_to t("rdb_filter_version_#{val}"), rdb_filter_path(version: val)
       - render_rdb_menu_list @board.filters[:version].versions do |val|
-        = link_to val.name, rdb_filter_path(version: val.id)
+        = link_to val.to_s_with_project, rdb_filter_path(version: val.id)
 
 .rdb-filter.rdb-async
   - render_rdb_menu :tracker, @board.filters[:tracker].title, icons: true do

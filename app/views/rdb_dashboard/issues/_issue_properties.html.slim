@@ -1,7 +1,7 @@
 .rdb-property.rdb-property-tracker = issue.tracker
 - if @board.versions.any?
   - if issue.fixed_version
-    .rdb-property.rdb-property-version = issue.fixed_version.name
+    .rdb-property.rdb-property-version = issue.fixed_version.to_s_with_project
   - else
     .rdb-property.rdb-property-version.rdb-disabled = t(:rdb_filter_version_unassigned)
 - if issue.assigned_to

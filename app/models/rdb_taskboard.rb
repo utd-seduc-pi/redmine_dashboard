@@ -136,7 +136,7 @@ class RdbTaskboard < RdbDashboard
         versions.each do |version|
           add_group RdbGroup.new(
             "version-#{version.id}",
-            version.name,
+            version.to_s_with_project,
             accept: proc {|issue| issue.fixed_version_id == version.id },
           )
         end
