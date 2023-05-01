@@ -48,9 +48,8 @@ class RdbDashboard
   end
 
   def projects
-    @projects ||= Project.where(
-        project.project_condition(options[:include_subprojects]),
-      )
+    @projects ||= Project.visible
+      .where(project.project_condition(options[:include_subprojects]),)
   end
 
   def project_ids
@@ -58,7 +57,7 @@ class RdbDashboard
   end
 
   def issues
-    filter Issue
+    filter Issue.visible
       .where(project_id: project_ids)
       .includes(:assigned_to, :time_entries, :tracker, :status, :priority, :fixed_version)
   end
@@ -71,22 +70,22 @@ class RdbDashboard
         version_ids += project.rolled_up_versions.pluck(:id)
       end
 
-      Version.where(id: version_ids.uniq).sorted
+      Version.visible.where(id: version_ids.uniq).sorted
     end
   end
 
   def issue_categories
-    @issue_categories ||= IssueCategory.where(project_id: project_ids).distinct
+    @issue_categories ||= IssueCategory.visible.where(project_id: project_ids).distinct
   end
 
   def trackers
-    @trackers ||= Tracker.where(
+    @trackers ||= Tracker.visible.where(
       id: Tracker.joins(:projects).where(projects: {id: project_ids}).distinct,
     ).sorted
   end
 
   def assignees
-    @assignees ||= Principal.where(
+    @assignees ||= Principal.visible.where(
       id: Principal.active.joins(:memberships).where(members: {project_id: project_ids}).distinct,
     ).sorted
   end
@@ -102,7 +101,7 @@ class RdbDashboard
     @abbreviations ||= []
     @abbreviations[project_id] ||= begin
       abbreviation = '#'
-      Project.find(project_id).custom_field_values.each do |f|
+      Project.visible.find(project_id).custom_field_values.each do |f|
         if f.to_s.blank? && f.custom_field.read_attribute(:name).downcase == 'abbreviation'
           abbreviation = "#{f}-"
         end
