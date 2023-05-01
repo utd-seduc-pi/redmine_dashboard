@@ -6,11 +6,11 @@ module RdbDashboardHelper
     options[:class] += ' rdb-menu-right' if options[:right]
     options[:class] += ' rdb-small' if options[:small]
 
-    slim_tag :div, id: "issue-#{title}", class: "rdb-menu rdb-menu-#{id} #{options[:class]}" do
+    slim_tag :div, class: "rdb-menu rdb-menu-#{id} #{options[:class]}" do
       if options[:anchor]
         link = options[:anchor].call.to_s.html_safe
       else
-        link = link_to(title, '#', class: 'rdb-menu-link')
+        link = link_to_context_menu # link_to(title, '#', class: 'rdb-menu-link')
       end
 
       if options[:header] && %i[h1 h2 h3 h4 h5].include?(options[:header].to_sym)
