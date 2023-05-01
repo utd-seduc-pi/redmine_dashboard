@@ -1,6 +1,6 @@
 / ISSUE CARD
 .rdb-card
-  div class="hascontextmenu rdb-priority rdb-priority-#{issue.priority.position}"
+  div class="rdb-priority rdb-priority-#{issue.priority.position}"
     header.rdb-card-header
       .rdb-card-title
         = render partial: 'rdb_dashboard/issues/issue_menu', locals: {issue: issue}
