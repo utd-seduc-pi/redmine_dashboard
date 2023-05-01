@@ -58,7 +58,7 @@ class RdbVersionFilter < RdbFilter
     elsif value.nil?
       I18n.t(:rdb_filter_version_unassigned)
     else
-      values.map {|id| board.versions.find(id) }.map(&:name).join(', ')
+      values.map {|id| board.versions.find(id) }.map(&:to_s_with_project).join(', ')
     end
   end
 
