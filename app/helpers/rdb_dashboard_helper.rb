@@ -6,7 +6,7 @@ module RdbDashboardHelper
     options[:class] += ' rdb-menu-right' if options[:right]
     options[:class] += ' rdb-small' if options[:small]
 
-    slim_tag :div, id: "issue-#{id}", class: "rdb-menu rdb-menu-#{id} #{options[:class]}" do
+    slim_tag :div, id: "issue-#{title}", class: "rdb-menu rdb-menu-#{id} #{options[:class]}" do
       if options[:anchor]
         link = options[:anchor].call.to_s.html_safe
       else
