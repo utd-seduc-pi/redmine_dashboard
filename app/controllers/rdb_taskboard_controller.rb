@@ -63,12 +63,7 @@ class RdbTaskboardController < RdbDashboardController
           },
         )
       else
-        errors = ""
-        @issue.errors.messages.each do |error|
-            errors += "#{error}\n"
-        end
-
-        return flash_custom_error errors , issue: @issue.subject
+        return flash_custom_error @issue.errors.full_messages, issue: @issue.subject
       end
     end
 
