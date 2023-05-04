@@ -47,6 +47,8 @@ class RdbCategoryFilter < RdbFilter
 
     category = board.issue_categories.find_by_id(value)
     new_title = "#{category.project.try(:name)} - #{category.try(:name)}"
+
+    return new_title
   end
 
   def enabled?(id)
