@@ -79,6 +79,12 @@ class RdbDashboardController < ApplicationController
     options[:update] ? render('index.js') : render('error.js')
   end
 
+  def flash_custom_error(text)
+    flash.now[:rdb_error] = text
+    Rails.logger.info "Render Rdb flash error: #{text}"
+    options[:update] ? render('index.js') : render('error.js')
+  end
+
   def options_for(board)
     User.current.pref["rdb_#{@project.id}_#{board}"] ||
       session["dashboard_#{@project.id}_#{User.current.id}_#{board}"] || {}
