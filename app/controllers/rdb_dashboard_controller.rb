@@ -79,7 +79,7 @@ class RdbDashboardController < ApplicationController
     options[:update] ? render('index.js') : render('error.js')
   end
 
-  def flash_custom_error(text)
+  def flash_custom_error(text, **options)
     flash.now[:rdb_error] = text
     Rails.logger.info "Render Rdb flash error: #{text}"
     options[:update] ? render('index.js') : render('error.js')
