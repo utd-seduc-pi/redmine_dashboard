@@ -45,7 +45,8 @@ class RdbCategoryFilter < RdbFilter
     return I18n.t(:rdb_filter_category_all) if all?
     return I18n.t(:rdb_filter_category_multiple) if values.count > 1
 
-    board.issue_categories.find_by_id(value).try(:name)
+    category = board.issue_categories.find_by_id(value)
+    new_title = "#{category.project.try(:name)} - #{category.try(:name)}"
   end
 
   def enabled?(id)
