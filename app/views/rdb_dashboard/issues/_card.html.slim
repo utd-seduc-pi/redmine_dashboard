@@ -10,6 +10,6 @@
       .rdb-card-progress-bar style="width: #{issue.done_ratio}%"
 
     .rdb-card-content
-      .rdb-card-subject.rdb-property-subject = "#{issue.subject}\n#{issue.custom_value_for(CustomField.find(7))?.value}"
+      .rdb-card-subject.rdb-property-subject = "#{issue.subject}\n#{issue.custom_value_for(CustomField.find(7)).value if issue.custom_value_for(CustomField.find(7)).present}"
       = render partial: 'rdb_dashboard/issues/issue_properties', locals: {issue: issue}
 / ISSUE CARD END
