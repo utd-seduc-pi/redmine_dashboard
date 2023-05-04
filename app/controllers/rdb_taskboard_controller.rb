@@ -64,7 +64,7 @@ class RdbTaskboardController < RdbDashboardController
         )
       else
         flash_custom_error @issue.errors.messages,
-        issue: @issue.subject, source: @issue.status.name, target: @status.name
+        issue: @issue.subject, source: @issue.status.name, target: @issue.errors.messages
         raise ActiveRecord::Rollback
       end
     end
