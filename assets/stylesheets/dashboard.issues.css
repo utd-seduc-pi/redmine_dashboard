@@ -93,11 +93,13 @@
 }
 
 .rdb-card-info {
-  display: block;
-  padding: 1px 0 0 14px;
-  background: transparent none no-repeat 0 70%;
+  float: left;
+  padding-left: 16px;
+  background-image: url("img/ticket.png");
+  background-repeat: no-repeat;
+  background-position: 4px 50%;
 }
-.rdb-info-tracker {
+.rdb-card-info span {
   font-size: 110%;
   background-image: url("img/ticket.png");
 }
