@@ -98,10 +98,7 @@
   background-image: url("img/ticket.png");
   background-repeat: no-repeat;
   background-position: 4px 50%;
-}
-.rdb-card-info span {
   font-size: 110%;
-  background-image: url("img/ticket.png");
 }
 
 .rdb-card-content {
