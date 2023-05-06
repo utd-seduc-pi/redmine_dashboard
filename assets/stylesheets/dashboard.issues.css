@@ -145,6 +145,14 @@
 .rdb-property-version {
   background-image: url("img/package.png");
 }
+.rdb-property-sla {
+  background-image: url("img/time.png");
+  color: red;
+  font-size: 120%;
+}
+.rdb-property-sla span {
+  font-size: 140%;
+}
 .rdb-property-time {
   background-image: url("img/time.png");
   font-size: 70%;
