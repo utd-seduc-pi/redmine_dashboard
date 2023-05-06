@@ -161,16 +161,7 @@
 .rdb-property-sla span {
   font-size: 90%;
 }
-.rdb-property-sla-answer {
-  background-image: url("img/time.png");
-  font-size: 80%;
-}
-.rdb-property-sla-answer.alert {
-  color: red;
-}
-.rdb-property-sla-answer span {
-  font-size: 90%;
-}
+
 .rdb-property-time {
   background-image: url("img/time.png");
   font-size: 70%;
