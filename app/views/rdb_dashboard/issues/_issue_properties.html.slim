@@ -1,8 +1,8 @@
 .rdb-property.rdb-property-tracker = issue.tracker
 - if issue.custom_field_value(19).present?
-    .rdb-property.rdb-property-sla = DateTime.parse(issue.custom_field_value(19)).strftime("%d/%m/%Y %H:%M")
+    .rdb-property.rdb-property-sla-answer class=(DateTime.parse(issue.custom_field_value(19)) > DateTime.now() ? 'alert' : '') = DateTime.parse(issue.custom_field_value(19)).strftime("%d/%m/%Y %H:%M")
 - if issue.custom_field_value(20).present?
-    .rdb-property.rdb-property-sla = DateTime.parse(issue.custom_field_value(20)).strftime("%d/%m/%Y %H:%M")
+    .rdb-property.rdb-property-sla-answer class=(DateTime.parse(issue.custom_field_value(20)) > DateTime.now() ? 'alert' : '') = DateTime.parse(issue.custom_field_value(20)).strftime("%d/%m/%Y %H:%M")
 - if @board.versions.any?
   - if issue.fixed_version
     .rdb-property.rdb-property-version = issue.fixed_version.to_s_with_project
