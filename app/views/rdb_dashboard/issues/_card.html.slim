@@ -5,6 +5,7 @@
       .rdb-card-title
         = render partial: 'rdb_dashboard/issues/issue_menu', locals: {issue: issue}
       div
+  div = "#{issue.custom_field_value(19)}"
 
     .rdb-card-progress
       .rdb-card-progress-bar style="width: #{issue.done_ratio}%"
