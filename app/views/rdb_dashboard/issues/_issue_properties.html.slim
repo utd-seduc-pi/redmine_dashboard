@@ -4,7 +4,7 @@
 - if issue.custom_field_value(20).present?
     .rdb-property.rdb-property-sla class=(((!issue.custom_field_value(23).present? && DateTime.now() > DateTime.parse(issue.custom_field_value(20))) || (issue.custom_field_value(23).present? && DateTime.parse(issue.custom_field_value(23)) > DateTime.parse(issue.custom_field_value(20)))) ? 'alert' : ((issue.custom_field_value(23).present? && DateTime.parse(issue.custom_field_value(23)) < DateTime.parse(issue.custom_field_value(20))) ? 'ok' : '')) = "S: #{DateTime.parse(issue.custom_field_value(20)).strftime("%d/%m/%Y %H:%M")}"
 - if issue.due_date.present?
-    .rdb-property.rdb-property-sla class=(issue.due_date < DateTime.now() ? 'alert' : issue.closed? ? 'ok' : '') = "E: #{DateTime.parse(due_date).strftime("%d/%m/%Y")}"
+    .rdb-property.rdb-property-sla class=(issue.due_date < DateTime.now() ? 'alert' : issue.closed? ? 'ok' : '') = "E: #{DateTime.parse(issue.due_date).strftime("%d/%m/%Y")}"
 - if @board.versions.any?
   - if issue.fixed_version
     .rdb-property.rdb-property-version = issue.fixed_version.to_s_with_project
