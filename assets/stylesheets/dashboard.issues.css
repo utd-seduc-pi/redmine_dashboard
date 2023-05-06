@@ -93,9 +93,10 @@
 }
 
 .rdb-card-info {
-  float: right;
+  float: left;
 }
 .rdb-info-tracker {
+  font-size: 110%;
   background-image: url("img/ticket.png");
 }
 
