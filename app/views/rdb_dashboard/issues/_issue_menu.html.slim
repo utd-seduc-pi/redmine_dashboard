@@ -5,8 +5,3 @@
     - if @board.editable?
       - render_rdb_menu_list_item do
         = link_to t(:rdb_issue_menu_edit), edit_issue_path(issue)
-    - render_rdb_menu_list title: t(:rdb_issue_menu_redmine_issue) do
-      - if @board.editable?
-          - render_rdb_menu_list_item do
-            = link_to t(:rdb_issue_menu_edit), edit_issue_path(issue)
-
