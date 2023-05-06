@@ -95,9 +95,9 @@
 .rdb-card-info {
   float: left;
   padding-left: 16px;
-  background-image: url("img/ticket.png");
+  /*background-image: url("img/ticket.png");
   background-repeat: no-repeat;
-  background-position: 4px 50%;
+  background-position: 4px 50%;*/
   font-size: 110%;
   font-weight: 500;
 }
