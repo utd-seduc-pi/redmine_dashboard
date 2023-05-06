@@ -146,18 +146,18 @@
   background-image: url("img/package.png");
 }
 .rdb-property-sla {
-  background-image: url("img/sla_ok.png");
+  background-image: url("img/time.png");
   font-size: 80%;
 }
 .rdb-property-sla.alert {
-  background-image: url("img/sla_red.png");
+  background-image: url("img/time.png");
   color: red;
 }
 .rdb-property-sla span {
   font-size: 90%;
 }
 .rdb-property-sla-answer {
-  background-image: url("img/sla.png");
+  background-image: url("img/time.png");
   font-size: 80%;
 }
 .rdb-property-sla-answer.alert {
