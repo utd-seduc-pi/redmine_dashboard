@@ -147,7 +147,7 @@
 }
 .rdb-property-sla {
   background-image: url("img/time.png");
-  font-size: 80%;
+  font-size: 90%;
 }
 .rdb-property-sla.alert {
   background-image: url("img/time.png");
@@ -157,9 +157,8 @@
   background-image: url("img/time.png");
   color: green;
 }
-
 .rdb-property-sla span {
-  font-size: 90%;
+  font-size: 100%;
 }
 
 .rdb-property-time {
