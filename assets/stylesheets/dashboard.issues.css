@@ -92,42 +92,14 @@
   margin-top: 4px;
 }
 
-.rdb-card-info-1 {
+.rdb-card-info {
   float: left;
   padding-left: 16px;
+  background-image: url("img/ticket.png");
+  background-repeat: no-repeat;
+  background-position: 4px 50%;
   font-size: 110%;
   font-weight: 500;
-  background-color: #aaa;
-}
-.rdb-card-info-2 {
-  float: left;
-  padding-left: 16px;
-  font-size: 110%;
-  font-weight: 500;
-  background-color: #6b6;
-}
-.rdb-card-info-3 {
-  float: left;
-  padding-left: 16px;
-  font-size: 110%;
-  font-weight: 500;
-  background-color: orange;
-}
-.rdb-card-info-4 {
-  float: left;
-  padding-left: 16px;
-  font-size: 110%;
-  font-weight: 500;
-  color: white;
-  background-color: red;
-}
-.rdb-card-info-5 {
-  float: left;
-  padding-left: 16px;
-  font-size: 110%;
-  font-weight: 500;
-  color: white;
-  background-color: black;
 }
 
 .rdb-card-content {

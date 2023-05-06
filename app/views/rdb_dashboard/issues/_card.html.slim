@@ -4,8 +4,11 @@
     header.rdb-card-header
       .rdb-card-title
         = render partial: 'rdb_dashboard/issues/issue_menu', locals: {issue: issue}
-    div class="rdb-card-info-#{issue.priority.position}"
-        = issue.tracker
+      div
+    
+    .rdb-card-info
+      .rdb-info-tracker = issue.tracker
+
     .rdb-card-progress
       .rdb-card-progress-bar style="width: #{issue.done_ratio}%"
 
