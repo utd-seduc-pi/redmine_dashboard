@@ -7,8 +7,8 @@
       div
     
     .rdb-card-info
-      .rdb-priority-#{issue.priority.position}
-      .rdb-info-tracker = issue.tracker
+      .rdb-info-priority-#{issue.priority.position}
+        = issue.tracker
 
     .rdb-card-progress
       .rdb-card-progress-bar style="width: #{issue.done_ratio}%"

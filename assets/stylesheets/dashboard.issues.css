@@ -101,6 +101,23 @@
   font-size: 110%;
   font-weight: 500;
 }
+.rdb-info-priority-1 {
+  background-color: #aaa;
+}
+.rdb-info-priority-2 {
+  background-color: #6b6;
+}
+.rdb-info-priority-3 {
+  background-color: orange;
+}
+.rdb-info-priority-4 {
+  color: white;
+  background-color: red;
+}
+.rdb-info-priority-5 {
+  color: white;
+  background-color: black;
+}
 
 .rdb-card-content {
   padding: 2px 4px 2px 5px;
