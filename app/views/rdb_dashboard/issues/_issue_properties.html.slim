@@ -1,4 +1,6 @@
 .rdb-property.rdb-property-tracker = issue.tracker
+- if issue.custom_field_value(19).present?
+    .rdb-property.rdb-property-time = issue.custom_field_value(19)
 - if @board.versions.any?
   - if issue.fixed_version
     .rdb-property.rdb-property-version = issue.fixed_version.to_s_with_project
