@@ -62,7 +62,6 @@
 .rdb-card-header-data {
   padding-top: 2px;
 }
-
 .rdb-card-title > a {
   padding-right: 4px;
 }
@@ -91,6 +90,13 @@
 .rdb-card-header .rdb-container,
 .rdb-compact-header .rdb-container {
   margin-top: 4px;
+}
+
+.rdb-card-info {
+  float: right;
+}
+.rdb-info-tracker {
+  background-image: url("img/ticket.png");
 }
 
 .rdb-card-content {
