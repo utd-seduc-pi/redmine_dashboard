@@ -33,7 +33,6 @@ class RdbGroup
   def accepted_issue_ids
     @accepted_issue_ids ||= accepted_issues.map(&:id)
   end
-
   def filter(issues)
     issues.select {|i| accept? i }
   end
