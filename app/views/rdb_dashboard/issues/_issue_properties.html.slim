@@ -1,8 +1,8 @@
 .rdb-property.rdb-property-tracker = issue.tracker
 - if issue.custom_field_value(19).present?
-    .rdb-property.rdb-property-sla-answer class=((!issue.custom_field_value(22).present? && DateTime.now() > DateTime.parse(issue.custom_field_value(19))) || (issue.custom_field_value(22).present? && DateTime.parse(issue.custom_field_value(22)) > DateTime.parse(issue.custom_field_value(19))) ? 'alert' : '') = "A: #{DateTime.parse(issue.custom_field_value(19)).strftime("%d/%m/%Y %H:%M")}"
+    .rdb-property.rdb-property-sla-answer class=((!issue.custom_field_value(22).present? && DateTime.now() > DateTime.parse(issue.custom_field_value(19))) || (issue.custom_field_value(22).present? && DateTime.parse(issue.custom_field_value(22)) > DateTime.parse(issue.custom_field_value(19))) ? 'alert' : (issue.custom_field_value(22).present? && DateTime.parse(issue.custom_field_value(22)) < DateTime.parse(issue.custom_field_value(19))) ? 'ok' : '') = "A: #{DateTime.parse(issue.custom_field_value(19)).strftime("%d/%m/%Y %H:%M")}"
 - if issue.custom_field_value(20).present?
-    .rdb-property.rdb-property-sla-answer class=((!issue.custom_field_value(23).present? && DateTime.now() > DateTime.parse(issue.custom_field_value(20))) || (issue.custom_field_value(23).present? && DateTime.parse(issue.custom_field_value(23)) > DateTime.parse(issue.custom_field_value(20))) ? 'alert' : '') = "S: #{DateTime.parse(issue.custom_field_value(20)).strftime("%d/%m/%Y %H:%M")}"
+    .rdb-property.rdb-property-sla-answer class=((!issue.custom_field_value(23).present? && DateTime.now() > DateTime.parse(issue.custom_field_value(20))) || (issue.custom_field_value(23).present? && DateTime.parse(issue.custom_field_value(23)) > DateTime.parse(issue.custom_field_value(20))) ? 'alert' : (issue.custom_field_value(22).present? && DateTime.parse(issue.custom_field_value(23)) < DateTime.parse(issue.custom_field_value(20))) ? 'ok' : '') = "S: #{DateTime.parse(issue.custom_field_value(20)).strftime("%d/%m/%Y %H:%M")}"
 - if @board.versions.any?
   - if issue.fixed_version
     .rdb-property.rdb-property-version = issue.fixed_version.to_s_with_project

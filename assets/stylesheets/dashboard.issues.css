@@ -153,6 +153,11 @@
   background-image: url("img/time.png");
   color: red;
 }
+.rdb-property-sla.ok {
+  background-image: url("img/time.png");
+  color: green;
+}
+
 .rdb-property-sla span {
   font-size: 90%;
 }
