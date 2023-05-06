@@ -14,3 +14,6 @@
 - if @board.issue_categories.any?
   - if issue.category
     .rdb-property.rdb-property-category = issue.category.name
+- if issue.time_entries.map(&:hours).reduce(&:+).to_f.round(2) > 0
+  .rdb-property.rdb-property-time class=(issue.estimated_hours.nil? && issue.time_entries.empty? ? 'rdb-disabled' : '')
+    = t(:rdb_property_time, estimated: issue.estimated_hours.to_f.round(2), actual: issue.time_entries.map(&:hours).reduce(&:+).to_f.round(2)).html_safe
