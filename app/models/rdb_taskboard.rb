@@ -106,7 +106,7 @@ class RdbTaskboard < RdbDashboard
         projects.each do |project|
           add_group RdbGroup.new(
             "project-#{project.id}",
-            "#{project.name} - #{:rdb_unassigned}",
+            "#{project.name} - Sem atribuição",
             accept: proc {|issue| issue.assigned_to_id.nil? && issue.project_id == project.id },
           )
         end
@@ -131,7 +131,7 @@ class RdbTaskboard < RdbDashboard
         projects.each do |project|
           add_group RdbGroup.new(
             "project-#{project.id}",
-            "#{project.name} - #{rdb_unassigned}",
+            "#{project.name} - Não categorizado",
             accept: proc {|issue| issue.category.nil? && issue.project_id == project.id },
           )
         end
@@ -147,7 +147,7 @@ class RdbTaskboard < RdbDashboard
         projects.each do |project|
           add_group RdbGroup.new(
             "project-#{project.id}",
-            "#{project.name} - #{:rdb_unassigned}",
+            "#{project.name} - Sem versão",
             accept: proc {|issue| issue.fixed_version.nil? && issue.project_id == project.id },
           )
         end
