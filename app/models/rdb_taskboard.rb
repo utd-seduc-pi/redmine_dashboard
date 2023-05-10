@@ -126,11 +126,13 @@ class RdbTaskboard < RdbDashboard
             accept: proc {|issue| issue.category_id == category.id },
           )
         end
-        add_group RdbGroup.new(
-          :category_none,
-          :rdb_unassigned,
-          accept: proc {|issue| issue.category.nil? },
-        )
+        projects.each do |project|
+          add_group RdbGroup.new(
+            "#{project.name} - #{:category_none}",
+            :rdb_unassigned,
+            accept: proc {|issue| issue.category.nil? && issue.project_id = project.id },
+          )
+        end
 
       when :version
         versions.each do |version|
