@@ -49,6 +49,6 @@ class RdbGroup
   end
 
   def issue_count
-    filter(@board.issues).count.to_i
+    filter(@board.issues.visible).count.to_i
   end
 end
