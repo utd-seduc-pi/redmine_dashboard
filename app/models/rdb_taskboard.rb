@@ -137,7 +137,7 @@ class RdbTaskboard < RdbDashboard
         end
 
       when :version
-        versions.sort_by{(|v| [v.project.try(:name), v.name]}.each do |version|
+        versions.sort_by{|v| [v.project.try(:name), v.name]}.each do |version|
           add_group RdbGroup.new(
             "version-#{version.id}",
             version.to_s_with_project,
