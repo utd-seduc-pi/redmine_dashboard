@@ -103,7 +103,7 @@ class RdbTaskboard < RdbDashboard
           :rdb_filter_assignee_me,
           accept: proc {|issue| issue.assigned_to_id == User.current.id },
         )
-        projects.each do |project|
+        projects.sort_by(&:lft).each do |project|
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.name} - Sem atribuição",
@@ -121,14 +121,14 @@ class RdbTaskboard < RdbDashboard
         end
 
       when :category
-        issue_categories.sort_by(&:name).each do |category|
+        issue_categories.sort_by{|c| [c.project.try(:lft), c.name]}.each do |category|
           add_group RdbGroup.new(
             "category-#{category.id}",
             "#{category.project.try(:name)} - #{category.name}",
             accept: proc {|issue| issue.category_id == category.id },
           )
         end
-        projects.sort_by(&:name).each do |project|
+        projects.sort_by(&:lft).each do |project|
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.name} - Não categorizado",
