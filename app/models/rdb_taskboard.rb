@@ -129,8 +129,8 @@ class RdbTaskboard < RdbDashboard
         projects.each do |project|
           add_group RdbGroup.new(
             "#{project.name} - #{:category_none}",
-            :rdb_unassigned,
-            accept: proc {|issue| issue.category.nil? && issue.project_id = project.id },
+            "#{project.name} - #{:category_none}",
+            accept: proc {|issue| issue.category.nil? && issue.project_id == project.id },
           )
         end
 
