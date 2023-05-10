@@ -104,7 +104,7 @@ class RdbTaskboard < RdbDashboard
           accept: proc {|issue| issue.assigned_to_id == User.current.id },
         )
         add_group RdbGroup.new(
-          :assigne_none,
+          "#{issue.project.try(:name)} - #{:assigne_none}",
           :rdb_filter_assignee_none,
           accept: proc {|issue| issue.assigned_to_id.nil? },
         )
@@ -122,12 +122,12 @@ class RdbTaskboard < RdbDashboard
         issue_categories.each do |category|
           add_group RdbGroup.new(
             "category-#{category.id}",
-            category.name,
+            "#{category.project.try(:name)} - #{category.name}",
             accept: proc {|issue| issue.category_id == category.id },
           )
         end
         add_group RdbGroup.new(
-          :category_none,
+          "#{issue.project.try(:name)} - #{:category_none}",
           :rdb_unassigned,
           accept: proc {|issue| issue.category.nil? },
         )
@@ -141,7 +141,7 @@ class RdbTaskboard < RdbDashboard
           )
         end
         add_group RdbGroup.new(
-          :version_none,
+          "#{issue.project.try(:name)} - #{:version_none}",
           :rdb_unassigned,
           accept: proc {|issue| issue.fixed_version.nil? },
         )
