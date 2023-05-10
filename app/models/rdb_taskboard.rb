@@ -103,11 +103,13 @@ class RdbTaskboard < RdbDashboard
           :rdb_filter_assignee_me,
           accept: proc {|issue| issue.assigned_to_id == User.current.id },
         )
-        add_group RdbGroup.new(
-          :assigne_none,
-          :rdb_filter_assignee_none,
-          accept: proc {|issue| issue.assigned_to_id.nil? },
-        )
+        projects.each do |project|
+          add_group RdbGroup.new(
+            "project-#{project.id}",
+            "#{project.name} - #{:rdb_unassigned}",
+            accept: proc {|issue| issue.assigned_to_id.nil? && issue.project_id == project.id },
+          )
+        end
         assignees.sort_by(&:name).each do |principal|
           next if principal.id == User.current.id
 
@@ -128,8 +130,8 @@ class RdbTaskboard < RdbDashboard
         end
         projects.each do |project|
           add_group RdbGroup.new(
-            "#{project.name} - #{:category_none}",
-            "#{project.name} - #{:category_none}",
+            "project-#{project.id}",
+            "#{project.name} - #{:rdb_unassigned}",
             accept: proc {|issue| issue.category.nil? && issue.project_id == project.id },
           )
         end
@@ -142,11 +144,13 @@ class RdbTaskboard < RdbDashboard
             accept: proc {|issue| issue.fixed_version_id == version.id },
           )
         end
-        add_group RdbGroup.new(
-          :version_none,
-          :rdb_unassigned,
-          accept: proc {|issue| issue.fixed_version.nil? },
-        )
+        projects.each do |project|
+          add_group RdbGroup.new(
+            "project-#{project.id}",
+            "#{project.name} - #{:rdb_unassigned}",
+            accept: proc {|issue| issue.fixed_version.nil? && issue.project_id == project.id },
+          )
+        end
 
       when :project
         projects.each do |project|
