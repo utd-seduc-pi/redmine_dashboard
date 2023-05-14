@@ -139,6 +139,9 @@
   color: #aaa;
 }
 
+.rdb-property-parent {
+  background-image: url("img/cog.png");
+}
 .rdb-property-tracker {
   background-image: url("img/ticket.png");
 }
