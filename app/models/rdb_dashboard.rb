@@ -171,7 +171,7 @@ class RdbDashboard
       config = YAML.load_file File.expand_path('../../config/default.yml', __dir__)
 
       {
-        view: check_opts(config, 'view', :card, :compact),
+        view: :card,
         include_subprojects: check_opts(config, 'include_subprojects', false, true),
         assignee: check_opts(config, 'assignee', :me, :all),
         version: check_opts(config, 'version', :latest, :all),
