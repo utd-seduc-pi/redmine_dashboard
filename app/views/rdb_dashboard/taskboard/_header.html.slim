@@ -61,7 +61,5 @@
 
 .rdb-option.rdb-async
   - render_rdb_menu :view, t(:rdb_options_view), right: true do
-    - render_rdb_menu_list RdbDashboard::VIEW_MODES, title: t(:rdb_options_issue_view) do |view|
-      = rdb_checkbox_link_to t(:"rdb_options_issue_view_#{view}"), rdb_board_path(view: view), enabled: @board.options[:view] == view
     - render_rdb_menu_list [:none, :tracker, :category, :priority, :assignee, :version, :parent, :project], title: t(:rdb_options_group) do |group|
       = rdb_checkbox_link_to t(:"rdb_group_#{group}"), rdb_board_path(group: group), enabled: @board.options[:group] == group
