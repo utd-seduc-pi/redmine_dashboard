@@ -144,11 +144,14 @@
   background-image: url("img/cog.png");
 }
 .rdb-property-parent a {
+  vertical-align: middle;
   font-size: 80%;
 }
 .rdb-property-parent-subject {
+  display: block;
+  margin: 0 0 0.25em 0;
+  height: 3.6em;
   font-size: 70%;
-  max-height: 3.4em;
   padding: 1px 0 0 14px;
   text-overflow: ellipsis;
   overflow: hidden;
