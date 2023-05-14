@@ -3,7 +3,7 @@
   div class="rdb-priority rdb-priority-#{issue.priority.position}"
     header.rdb-card-header
       .rdb-card-title
-        = render partial: 'rdb_dashboard/issues/issue_menu', locals: {issue: issue}
+        = link_to t("##{issue.id}"), issue_path(issue)
       div
     
     .rdb-card-info
