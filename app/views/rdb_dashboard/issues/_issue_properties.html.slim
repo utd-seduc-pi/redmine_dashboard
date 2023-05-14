@@ -18,4 +18,4 @@
   .rdb-property.rdb-property-time class=(issue.estimated_hours.nil? && issue.time_entries.empty? ? 'rdb-disabled' : '')
     = t(:rdb_property_time, estimated: issue.estimated_hours.to_f.round(2), actual: issue.time_entries.map(&:hours).reduce(&:+).to_f.round(2)).html_safe
 - if issue.parent_id.present?
-  .rdb-property.rdb-property-parent = "##{issue.parent.id} #{issue.parent.tracker.name}\n#{issue.parent}"
+  .rdb-property.rdb-property-parent = link_to t(issue.parent), issue_path(issue.parent_id)

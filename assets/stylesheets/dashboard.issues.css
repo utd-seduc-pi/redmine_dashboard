@@ -140,10 +140,11 @@
 }
 
 .rdb-property-parent {
+  background-position-y: top;
   background-image: url("img/cog.png");
 }
 .rdb-property-parent span {
-  font-size: 70%;
+  font-size: 60%;
   max-height: 2.6em;
   text-overflow: ellipsis;
   overflow: hidden;
