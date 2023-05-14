@@ -1,2 +1,3 @@
 - if issue.parent_id.present?
   .rdb-property.rdb-property-parent = link_to "#{issue.parent.tracker.name} ##{issue.parent_id}", issue_path(issue.parent_id)
+  .rdb-property.rdb-property-parent = issue.parent.subject
