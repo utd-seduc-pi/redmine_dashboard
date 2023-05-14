@@ -142,6 +142,14 @@
 .rdb-property-parent {
   background-image: url("img/cog.png");
 }
+.rdb-property-parent span {
+  font-size: 70%;
+  max-height: 2.6em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /*white-space: pre-line;*/
+}
+
 .rdb-property-tracker {
   background-image: url("img/ticket.png");
 }
