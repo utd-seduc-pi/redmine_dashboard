@@ -15,4 +15,7 @@
     .rdb-card-content
       .rdb-card-subject.rdb-property-subject = "#{issue.subject}"
       = render partial: 'rdb_dashboard/issues/issue_properties', locals: {issue: issue}
+
+    .rdb-card-content
+        = render partial: 'rdb_dashboard/issues/parent', locals: {issue: issue}
 / ISSUE CARD END
