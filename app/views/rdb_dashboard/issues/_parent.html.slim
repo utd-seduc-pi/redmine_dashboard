@@ -1,0 +1,2 @@
+- if issue.parent_id.present?
+  .rdb-property.rdb-property-parent = link_to t(issue.parent), issue_path(issue.parent_id)

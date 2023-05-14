@@ -9,6 +9,8 @@
         = render partial: 'rdb_dashboard/issues/issue_menu', locals: {issue: issue}
       .rdb-compact-header-data
         = render partial: 'rdb_dashboard/issues/issue_properties', locals: {issue: issue}
+      .rdb-compact-header-data
+        = render partial: 'rdb_dashboard/issues/parent', locals: {issue: issue}
 
     .rdb-compact-content
       .rdb-compact-subject.rdb-property-subject = issue.subject
