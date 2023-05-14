@@ -146,7 +146,7 @@
 .rdb-property-parent a {
   font-size: 70%;
 }
-.rdb-property-parent span {
+.rdb-property-parent-subject {
   font-size: 70%;
   max-height: 2.6em;
   text-overflow: ellipsis;
