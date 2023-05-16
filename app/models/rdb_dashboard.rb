@@ -60,8 +60,8 @@ class RdbDashboard
   def issues
     filter Issue.visible
       .where(project_id: project_ids)
-      .includes(:assigned_to, :time_entries, :tracker, :status, :priority, :fixed_version)
-      .order(:lft)
+      .includes(:project, :assigned_to, :time_entries, :tracker, :status, :priority, :fixed_version)
+      .sorted
   end
 
   def versions
@@ -75,12 +75,12 @@ class RdbDashboard
       Version.visible
         .where(id: version_ids.uniq)
         .includes(:project)
-        .reorder("#{Project.table_name}.lft")
+        .sorted
     end
   end
 
   def issue_categories
-    @issue_categories ||= IssueCategory.where(project_id: project_ids).distinct
+    @issue_categories ||= IssueCategory.where(project_id: project_ids).includes(:project).distinct
   end
 
   def trackers
