@@ -72,7 +72,7 @@ class RdbDashboard
         version_ids += project.rolled_up_versions.pluck(:id)
       end
 
-      Version.visible.where(id: version_ids.uniq).sort_by(&:project.lft)
+      Version.visible.where(id: version_ids.uniq).sort_by(&:to_s_with_project)
     end
   end
 
