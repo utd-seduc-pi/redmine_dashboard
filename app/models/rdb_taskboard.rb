@@ -145,7 +145,6 @@ class RdbTaskboard < RdbDashboard
 
       when :version
         versions.each do |version|
-          logger.info "#### PROJECT LFT #{version.project.lft}"
           add_group RdbGroup.new(
             "version-#{version.id}",
             version.to_s_with_project,
