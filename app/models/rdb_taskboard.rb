@@ -121,7 +121,7 @@ class RdbTaskboard < RdbDashboard
         end
 
       when :category
-        issue_categories.sort_by{|c| [c.project.try(:lft), c.name]}.each do |category|
+        issue_categories.each do |category|
           add_group RdbGroup.new(
             "category-#{category.id}",
             "#{category.project.try(:name)} - #{category.name}",
@@ -137,14 +137,14 @@ class RdbTaskboard < RdbDashboard
         end
 
       when :version
-        versions.sort_by{|v| [v.project.try(:lft), v.name]}.each do |version|
+        versions.each do |version|
           add_group RdbGroup.new(
             "version-#{version.id}",
             version.to_s_with_project,
             accept: proc {|issue| issue.fixed_version_id == version.id },
           )
         end
-        projects.sort_by(&:lft).each do |project|
+        projects.each do |project|
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.name} - Sem versão",
