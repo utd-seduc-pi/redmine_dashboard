@@ -50,6 +50,7 @@ class RdbDashboard
   def projects
     @projects ||= Project.visible
       .where(project.project_condition(options[:include_subprojects]),)
+      .sort_by(&:lft)
   end
 
   def project_ids
@@ -60,6 +61,7 @@ class RdbDashboard
     filter Issue.visible
       .where(project_id: project_ids)
       .includes(:assigned_to, :time_entries, :tracker, :status, :priority, :fixed_version)
+      .sort_by(&:lft)
   end
 
   def versions
@@ -70,12 +72,12 @@ class RdbDashboard
         version_ids += project.rolled_up_versions.pluck(:id)
       end
 
-      Version.visible.where(id: version_ids.uniq).sorted
+      Version.visible.where(id: version_ids.uniq).sort_by(&:project.lft)
     end
   end
 
   def issue_categories
-    @issue_categories ||= IssueCategory.where(project_id: project_ids).distinct
+    @issue_categories ||= IssueCategory.where(project_id: project_ids).distinct.sorted
   end
 
   def trackers
