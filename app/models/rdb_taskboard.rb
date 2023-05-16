@@ -138,17 +138,18 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.name} - Não categorizado",
-            project.lft,
+            project.lft
             accept: proc {|issue| issue.category.nil? && issue.project_id == project.id },
           )
         end
 
       when :version
         versions.each do |version|
+          logger.info "#### PROJECT LFT #{version.project.lft}"
           add_group RdbGroup.new(
             "version-#{version.id}",
             version.to_s_with_project,
-            "#{version.lft}-#{version.name}",
+            "#{version.project.lft}-#{version.name}",
             accept: proc {|issue| issue.fixed_version_id == version.id },
           )
         end
@@ -156,7 +157,7 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.name} - Sem versão",
-            "#{project.lft}",
+            "#{version.project.lft}",
             accept: proc {|issue| issue.fixed_version.nil? && issue.project_id == project.id },
           )
         end
