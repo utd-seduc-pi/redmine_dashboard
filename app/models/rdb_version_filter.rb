@@ -63,10 +63,10 @@ class RdbVersionFilter < RdbFilter
   end
 
   def versions
-    board.versions.where(status: %i[open locked])
+    board.versions.where(status: %i[open locked]).sort_by(&:to_s_with_project)
   end
 
   def done_versions
-    board.versions.where(status: :closed)
+    board.versions.where(status: :closed).sort_by(&:to_s_with_project)
   end
 end
