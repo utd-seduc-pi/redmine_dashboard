@@ -61,7 +61,6 @@ class RdbDashboard
     filter Issue.visible
       .where(project_id: project_ids)
       .includes(:project, :assigned_to, :time_entries, :tracker, :status, :priority, :fixed_version)
-      .sorted
   end
 
   def versions
@@ -75,7 +74,6 @@ class RdbDashboard
       Version.visible
         .where(id: version_ids.uniq)
         .includes(:project)
-        .sorted
     end
   end
 
