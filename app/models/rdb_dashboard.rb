@@ -50,7 +50,6 @@ class RdbDashboard
   def projects
     @projects ||= Project.visible
       .where(project.project_condition(options[:include_subprojects]),)
-      .sort_by(&:lft)
   end
 
   def project_ids
@@ -61,7 +60,6 @@ class RdbDashboard
     filter Issue.visible
       .where(project_id: project_ids)
       .includes(:assigned_to, :time_entries, :tracker, :status, :priority, :fixed_version)
-      .sort_by(&:lft)
   end
 
   def versions
