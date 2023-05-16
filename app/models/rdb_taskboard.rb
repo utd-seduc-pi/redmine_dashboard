@@ -103,7 +103,7 @@ class RdbTaskboard < RdbDashboard
           :rdb_filter_assignee_me,
           accept: proc {|issue| issue.assigned_to_id == User.current.id },
         )
-        projects.sort_by(&:lft).each do |project|
+        projects.each do |project|
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.name} - Sem atribuição",
@@ -128,7 +128,7 @@ class RdbTaskboard < RdbDashboard
             accept: proc {|issue| issue.category_id == category.id },
           )
         end
-        projects.sort_by(&:lft).each do |project|
+        projects.each do |project|
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.name} - Não categorizado",
@@ -144,10 +144,10 @@ class RdbTaskboard < RdbDashboard
             accept: proc {|issue| issue.fixed_version_id == version.id },
           )
         end
-        projects.sort_by(&:lft).each do |project|
+        projects.each do |project|
           add_group RdbGroup.new(
             "project-#{project.id}",
-            "#{version.project.lft} #{project.name} - Sem versão",
+            "#{project.lft} #{project.name} - Sem versão",
             accept: proc {|issue| issue.fixed_version.nil? && issue.project_id == project.id },
           )
         end
