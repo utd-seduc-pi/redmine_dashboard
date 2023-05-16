@@ -72,7 +72,10 @@ class RdbDashboard
         version_ids += project.rolled_up_versions.pluck(:id)
       end
 
-      Version.visible.where(id: version_ids.uniq).includes(:project).order("project.lft")
+      Version.visible
+        .where(id: version_ids.uniq)
+        .includes(:project)
+        .reorder("#{Project.table_name}.lft")
     end
   end
 
