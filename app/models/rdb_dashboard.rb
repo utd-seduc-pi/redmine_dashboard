@@ -73,7 +73,9 @@ class RdbDashboard
       end
 
       Version.visible
-        .where(id: version_ids.uniq).sorted
+        .where(id: version_ids.uniq)
+        .includes(:project)
+        .reorder("#{Project.table_name}.lft")
     end
   end
 
