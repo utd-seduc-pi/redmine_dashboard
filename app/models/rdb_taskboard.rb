@@ -159,7 +159,7 @@ class RdbTaskboard < RdbDashboard
             "#{version.project.lft}-",
             accept: proc {|issue| issue.fixed_version.nil? && issue.project_id == project.id },
           )
-        end
+        end 
 
       when :project
         projects.each do |project|
