@@ -84,6 +84,7 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "tracker-#{tracker.id}",
             tracker.name,
+            tracker.name,
             accept: proc {|issue| issue.tracker == tracker },
           )
         end
@@ -93,6 +94,7 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "priority-#{p.position}",
             p.name,
+            p.position,
             accept: proc {|issue| issue.priority_id == p.id },
           )
         end
@@ -101,12 +103,14 @@ class RdbTaskboard < RdbDashboard
         add_group RdbGroup.new(
           :assigne_me,
           :rdb_filter_assignee_me,
+          0,
           accept: proc {|issue| issue.assigned_to_id == User.current.id },
         )
         projects.each do |project|
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.name} - Sem atribuição",
+            "#{project.lft}",
             accept: proc {|issue| issue.assigned_to_id.nil? && issue.project_id == project.id },
           )
         end
@@ -115,6 +119,7 @@ class RdbTaskboard < RdbDashboard
 
           add_group RdbGroup.new(
             "assignee-#{id}",
+            principal.name,
             principal.name,
             accept: proc {|issue| !issue.assigned_to_id.nil? && issue.assigned_to_id == principal.id },
           )
@@ -125,6 +130,7 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "category-#{category.id}",
             "#{category.project.try(:name)} - #{category.name}",
+            "#{category.project.lft}-#{category.name}",
             accept: proc {|issue| issue.category_id == category.id },
           )
         end
@@ -132,6 +138,7 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.name} - Não categorizado",
+            "#{project.lft}",
             accept: proc {|issue| issue.category.nil? && issue.project_id == project.id },
           )
         end
@@ -141,6 +148,7 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "version-#{version.id}",
             "#{version.project.lft} #{version.to_s_with_project}",
+            "#{version.project.lft} #{version.name}",
             accept: proc {|issue| issue.fixed_version_id == version.id },
           )
         end
@@ -148,6 +156,7 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.lft} #{project.name} - Sem versão",
+            "#{version.project.lft}-",
             accept: proc {|issue| issue.fixed_version.nil? && issue.project_id == project.id },
           )
         end
@@ -157,6 +166,7 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "project-#{project.id}",
             project.name,
+            "#{project.lft}",
             accept: proc {|issue| issue.project_id == project.id },
           )
         end
@@ -166,12 +176,14 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "issue-#{issue.id}",
             issue.subject,
+            "#{issue.project.lft} #{issue.subject}",
             accept: proc {|sub_issue| sub_issue.parent_id == issue.id },
           )
         end
         add_group RdbGroup.new(
           'issue-others',
           :rdb_no_parent,
+          " ",
           accept: proc {|issue| issue.parent.nil? },
         )
     end
