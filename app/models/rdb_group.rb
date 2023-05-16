@@ -2,12 +2,11 @@
 
 class RdbGroup
   attr_accessor :board
-  attr_reader :name, :order, :options, :id
+  attr_reader :name, :options, :id
 
-  def initialize(id, name, order, options = {})
+  def initialize(id, name, options = {})
     @id    = id.to_s
     @name  = name
-    @order = order
 
     @options = default_options
     @options[:accept] = options[:accept] if options[:accept].respond_to? :call
