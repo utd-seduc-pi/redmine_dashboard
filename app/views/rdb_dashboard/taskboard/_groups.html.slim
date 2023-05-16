@@ -4,6 +4,6 @@
       = render partial: 'rdb_dashboard/taskboard/columns', locals: {group: @board.group_list.first}
   - else
     - show_all = @board.group_list.select(&:visible?).none?
-    - @board.group_list.sort_by(&:order).each do |group|
+    - @board.group_list.sort_by(&:title).each do |group|
       - if show_all || group.visible?
         = render partial: 'rdb_dashboard/taskboard/group', locals: {group: group}
