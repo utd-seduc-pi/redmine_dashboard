@@ -148,7 +148,7 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "version-#{version.id}",
             version.to_s_with_project,
-            "#{version.project.lft}-#{version.name}",
+            "#{version.lft}-#{version.name}",
             accept: proc {|issue| issue.fixed_version_id == version.id },
           )
         end
@@ -156,7 +156,7 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.name} - Sem versão",
-            "#{version.project.lft}",
+            "#{project.lft}",
             accept: proc {|issue| issue.fixed_version.nil? && issue.project_id == project.id },
           )
         end
