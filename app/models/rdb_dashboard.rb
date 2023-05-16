@@ -77,7 +77,7 @@ class RdbDashboard
   end
 
   def issue_categories
-    @issue_categories ||= IssueCategory.where(project_id: project_ids).distinct.sorted
+    @issue_categories ||= IssueCategory.where(project_id: project_ids).distinct
   end
 
   def trackers
