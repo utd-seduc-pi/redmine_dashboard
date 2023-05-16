@@ -138,7 +138,7 @@ class RdbTaskboard < RdbDashboard
           add_group RdbGroup.new(
             "project-#{project.id}",
             "#{project.name} - Não categorizado",
-            project.lft
+            project.lft,
             accept: proc {|issue| issue.category.nil? && issue.project_id == project.id },
           )
         end
