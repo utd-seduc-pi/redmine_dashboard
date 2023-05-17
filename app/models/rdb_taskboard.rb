@@ -188,7 +188,7 @@ class RdbTaskboard < RdbDashboard
         )
     end
 
-    add_group RdbGroup.new(:all, :rdb_all_issues) if groups.empty?
+    add_group RdbGroup.new(:all, :rdb_all_issues, " ") if groups.empty?
   end
 
   # -------------------------------------------------------
