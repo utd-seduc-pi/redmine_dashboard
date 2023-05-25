@@ -160,6 +160,13 @@
   /*white-space: pre-line;*/
 }
 
+.rdb-property-classe {
+  background-image: url("img/ticket.png");
+}
+.rdb-property-classe span {
+  font-size: 70%;
+}
+
 .rdb-property-tracker {
   background-image: url("img/ticket.png");
 }
