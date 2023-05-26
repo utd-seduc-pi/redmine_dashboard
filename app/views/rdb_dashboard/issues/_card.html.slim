@@ -12,6 +12,10 @@
     .rdb-card-progress
       .rdb-card-progress-bar style="width: #{issue.done_ratio}%"
 
+    - if issue.custom_field_value(7).present?
+      .rdb-property.rdb-property-classe = CustomFieldEnumeration.find(issue.custom_field_value(7))
+
+
     .rdb-card-content
       .rdb-card-subject.rdb-property-subject = "#{issue.subject}"
       = render partial: 'rdb_dashboard/issues/issue_properties', locals: {issue: issue}
