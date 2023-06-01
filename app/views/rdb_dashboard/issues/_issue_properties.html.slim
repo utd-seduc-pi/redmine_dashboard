@@ -1,5 +1,5 @@
 - if issue.custom_field_value(34).present? 
-    .rdb-property.rdb-property-location  issue.custom_field_value(34)
+    .rdb-property.rdb-property-location = issue.custom_field_value(34)
 - if issue.custom_field_value(19).present? 
     .rdb-property.rdb-property-sla class=(((!issue.custom_field_value(22).present? && DateTime.now() > DateTime.parse(issue.custom_field_value(19))) || (issue.custom_field_value(22).present? && DateTime.parse(issue.custom_field_value(22)) > DateTime.parse(issue.custom_field_value(19)))) ? 'alert' : ((issue.custom_field_value(22).present? && DateTime.parse(issue.custom_field_value(22)) < DateTime.parse(issue.custom_field_value(19))) ? 'ok' : '')) = "R: #{DateTime.parse(issue.custom_field_value(19)).strftime("%d/%m/%Y %H:%M")}"
 - if issue.custom_field_value(20).present?
