@@ -168,6 +168,13 @@
   font-size: 50%;
 }
 
+.rdb-property-location {
+  background-image: url("img/location.png");
+}
+.rdb-property-location span {
+  font-size: 50%;
+}
+
 .rdb-property-tracker {
   background-image: url("img/ticket.png");
 }
